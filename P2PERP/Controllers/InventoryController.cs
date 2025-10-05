@@ -822,7 +822,7 @@ namespace P2PERP.Controllers
         }
         //   Update Warehouse
         [HttpPost]
-        public async Task<ActionResult> UpdateWarehouseSK(Inventory model)
+        public async Task<ActionResult> UpdateWarehouseSK(InventorySK model)
         {
             try
             {
@@ -957,7 +957,7 @@ namespace P2PERP.Controllers
 
         //  SAVE RACK
         [HttpPost]
-        public async Task<ActionResult> SaveRackSK(Inventory model)
+        public async Task<ActionResult> SaveRackSK(InventorySK model)
         {
             model.AddedBy = Session["StaffCode"].ToString();
             try
@@ -1074,7 +1074,7 @@ namespace P2PERP.Controllers
 
         //   THIS IS A SAVE ROW 
         [HttpPost]
-        public async Task<ActionResult> SaveRowSBK(Inventory model)
+        public async Task<ActionResult> SaveRowSBK(InventorySK model)
         {
             model.AddedBy = Session["StaffCode"].ToString();
             try
@@ -1174,7 +1174,7 @@ namespace P2PERP.Controllers
 
         //   THIS IS USED BY SAVE BIN 
         [HttpPost]
-        public async Task<ActionResult> SaveBinSKK(Inventory model)
+        public async Task<ActionResult> SaveBinSKK(InventorySK model)
         {
             model.AddedBy = Session["StaffCode"].ToString();
 
@@ -1247,30 +1247,7 @@ namespace P2PERP.Controllers
         }
 
         //      THIS IS USED FOR SAVE SECTION
-        [HttpPost]
-        public async Task<ActionResult> AddSection(Inventory model)
-        {
-            if (ModelState.IsValid)
-            {
-                try
-                {
-                    bool isSaved = await bal.AddSectionAsyncSK(model);
-                    if (isSaved)
-                    {
-                        return Json(new { success = true, message = "Section added successfully!" });
-                    }
-                    else
-                    {
-                        return Json(new { success = false, message = "Failed to save section." });
-                    }
-                }
-                catch (Exception ex)
-                {
-                    return Json(new { success = false, message = ex.Message });
-                }
-            }
-            return Json(new { success = false, message = "Invalid data." });
-        }
+      
 
 
         //    THIS IS USED BY UPDATE AND VIEW BY USING ID 
@@ -1298,7 +1275,7 @@ namespace P2PERP.Controllers
 
         //  UPDATE SECTION
         [HttpPost]
-        public async Task<ActionResult> UpdateSectionSK(Inventory model)
+        public async Task<ActionResult> UpdateSectionSK(InventorySK model)
         {
             try
             {
